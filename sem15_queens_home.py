@@ -63,6 +63,6 @@ NUMBER_OF_SET = {NUMBER_OF_SET} CHESSBOARD_SIZE = {CHESSBOARD_SIZE}')
 
     end_time = time.time()
     delta_time = end_time - start_time
-    logger.info(f'Время выполнения кода {delta_time}')
+    logger.info(f'Сode execution duration (seconds) {delta_time}')
     print(f'Время выполнения кода {delta_time}')
     logger.info(f'{time.asctime()}')
