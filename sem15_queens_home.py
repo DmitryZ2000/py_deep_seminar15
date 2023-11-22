@@ -25,12 +25,10 @@ def queens_setup(queens_number: int = 2, chessboard_size: int = 8) -> tuple:
     return tuple(queens_set)
 
 if __name__ =="__main__":
-    start_time = time.time()
-    
     FORMAT = '{levelname:<6}, {asctime}, {name}, {msg}'
     logging.basicConfig(format=FORMAT, style='{', filename='queens.log', filemode='w', encoding='utf-8', level=logging.INFO)
     # Каждый раз создаем новый пустой файл
-    logger = logging.getLogger('queens')
+    logger = logging.getLogger('queens')    
 
     parser = argparse.ArgumentParser(description="Solving task of queens' cheese. ")
     parser.add_argument('-q_n', metavar='q_n', type=int, help='QUEENS_NUMBER', default=8)
@@ -42,7 +40,10 @@ if __name__ =="__main__":
     QUEENS_NUMBER = args.q_n
     NUMBER_OF_SET = args.n_s
     CHESSBOARD_SIZE = args.ch_s
-    
+
+    start_time = time.time()
+
+    logger.info(f'{time.asctime()}')    
     logger.info(f' Solving task of queens cheese QUEENS_NUMBER = {QUEENS_NUMBER} \
 NUMBER_OF_SET = {NUMBER_OF_SET} CHESSBOARD_SIZE = {CHESSBOARD_SIZE}')
 
@@ -62,5 +63,6 @@ NUMBER_OF_SET = {NUMBER_OF_SET} CHESSBOARD_SIZE = {CHESSBOARD_SIZE}')
 
     end_time = time.time()
     delta_time = end_time - start_time
-    logger.info(f'{delta_time}')
+    logger.info(f'Время выполнения кода {delta_time}')
     print(f'Время выполнения кода {delta_time}')
+    logger.info(f'{time.asctime()}')
