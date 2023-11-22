@@ -5,6 +5,7 @@
 import time
 import random as rnd
 import logging
+import argparse
 
 def check(my_qeens: tuple) -> True | False:
     """ Проверка на наличие пары, бьющей друг друга"""
@@ -26,14 +27,24 @@ def queens_setup(queens_number: int = 2, chessboard_size: int = 8) -> tuple:
 if __name__ =="__main__":
     start_time = time.time()
     
-    FORMAT = '{levelname:<8}, {asctime}, {name}, {msg}'
+    FORMAT = '{levelname:<6}, {asctime}, {name}, {msg}'
     logging.basicConfig(format=FORMAT, style='{', filename='queens.log', filemode='w', encoding='utf-8', level=logging.INFO)
     # Каждый раз создаем новый пустой файл
     logger = logging.getLogger('queens')
 
-    QUEENS_NUMBER = 8
-    NUMBER_OF_SET = 8
-    CHESSBOARD_SIZE = 8
+    parser = argparse.ArgumentParser(description="Solving task of queens' cheese. ")
+    parser.add_argument('-q_n', metavar='q_n', type=int, help='QUEENS_NUMBER', default=8)
+    parser.add_argument('-n_s', metavar='n_s', type=int, help='NUMBER_OF_SET', default=4)
+    parser.add_argument('-ch_s', metavar='ch_s', type=int, help='CHESSBOARD_SIZE', default=8)
+    args = parser.parse_args()
+
+
+    QUEENS_NUMBER = args.q_n
+    NUMBER_OF_SET = args.n_s
+    CHESSBOARD_SIZE = args.ch_s
+    
+    logger.info(f' Solving task of queens cheese QUEENS_NUMBER = {QUEENS_NUMBER} \
+NUMBER_OF_SET = {NUMBER_OF_SET} CHESSBOARD_SIZE = {CHESSBOARD_SIZE}')
 
     count = 0
     # dic_queens = {}
@@ -50,4 +61,6 @@ if __name__ =="__main__":
     # print(dic_queens)
 
     end_time = time.time()
-    print(f'Время выполнения кода {end_time - start_time}')
+    delta_time = end_time - start_time
+    logger.info(f'{delta_time}')
+    print(f'Время выполнения кода {delta_time}')
